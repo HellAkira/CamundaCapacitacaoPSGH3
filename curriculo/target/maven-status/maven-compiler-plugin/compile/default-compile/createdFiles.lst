@@ -1,0 +1,4 @@
+br\gov\ms\detran\bmps\CamundaBpmProcessApplication.class
+br\gov\ms\detran\bmps\LoggerDelegate.class
+br\gov\ms\detran\bmps\ProcessConstants.class
+br\gov\ms\detran\ChamadaApi.class
