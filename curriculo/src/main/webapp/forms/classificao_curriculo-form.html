@@ -4,16 +4,15 @@ by setting the formKey of a BPMN User Task to:
 embedded:app:forms/task-form.html
 -->
 
-<form name="classificao_curriculo-form" class="form-horizontal" role="form">
+<form name="avaliacao_gestor_RH" class="form-horizontal" role="form">
 
+  <!-- read-only field -->
   <div class="form-group">
     <label for="nome_candidato" class="col-sm-2 control-label">Nome Candidato</label>
     <div class="col-sm-10">
-      <input type="text" name="nome_candidato" cam-variable-name="telefone_contato" cam-variable-type="String"
-        class="form-control" 
-        readonly/>
+      <input type="text" name="nome_candidato" cam-variable-name="nome_candidato" cam-variable-type="String"
+        class="form-control" />
     </div>
-    
   </div>
 
 
@@ -21,47 +20,55 @@ embedded:app:forms/task-form.html
     <label for="telefone_contato" class="col-sm-2 control-label">Telefone Contato</label>
     <div class="col-sm-10">
       <input type="text" name="telefone_contato" cam-variable-name="telefone_contato" cam-variable-type="String"
-        class="form-control" 
-        readonly/>
+        class="form-control" />
     </div>
   </div>
 
   <div class="form-group">
     <label for="email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
-      <input type="text" name="email" cam-variable-name="email" cam-variable-type="String" class="form-control" 
-      readonly/>
-      
+      <input type="text" name="email" cam-variable-name="email" cam-variable-type="String" class="form-control" />
     </div>
   </div>
 
-  
+  <div class="form-group">
+    <label for="data_entrevista" class="col-sm-2 control-label">Data da Entrevista</label>
+    <div class="col-sm-10">
+      <input type="Date" name="data_entrevista" cam-variable-name="data_entrevista" cam-variable-type="Date"
+        class="form-control" />
+    </div>
+  </div>
+
 
   <div class="form-group">
     <label for="obs_classificar_curriculo" class="col-sm-2 control-label">Observação Classificar Curriculo</label>
     <div class="col-sm-10">
       <textarea type="text" class="form-control" name="obs_classificar_curriculo"
-        cam-variable-name="obs_classificar_curriculo" cam-variable-type="String" rows="3" cols="80"
-        readonly>
+        cam-variable-name="obs_classificar_curriculo" cam-variable-type="String" rows="3" cols="80">
         </textarea>
     </div>
   </div>
 
-  
+
   <div class="form-group">
     <label for="obs_avaliacao_gestor_RH" class="col-sm-2 control-label">Observação Gestor RH</label>
     <div class="col-sm-10">
       <textarea type="text" class="form-control" name="obs_avaliacao_gestor_RH"
-        readonly cam-variable-name="obs_avaliacao_gestor_RH" cam-variable-type="String" rows="3" cols="80">
+        cam-variable-name="obs_avaliacao_gestor_RH" cam-variable-type="String" rows="3" cols="80">
         </textarea>
-  
+      </div>
+    </div>
 
-    <div class="form-group">
-      <label for="obs_avaliacao_interpessoal" class="col-sm-2 control-label">Observação Interpessoal</label>
-      <div class="col-sm-10">
-        <textarea type="text" class="form-control" name="obs_avaliacao_interpessoal"
-          cam-variable-name="obs_avaliacao_interpessoal" cam-variable-type="String" rows="3" cols="80">
-            </textarea>
+
+        <div class="form-group">
+          <label for="obs_avaliacao_interpessoal" class="col-sm-2 control-label">Observação Interpessoal</label>
+          <div class="col-sm-10">
+            <textarea type="text" class="form-control" name="obs_avaliacao_interpessoal"
+              cam-variable-name="obs_avaliacao_interpessoal" cam-variable-type="String" rows="3" cols="80">
+                </textarea>
+      </div>
+  </div>
+
 
             <div class="form-group">
               <label for="obs_avaliacao_antecedentes" class="col-sm-2 control-label">Observação Antecedentes</label>
@@ -69,7 +76,9 @@ embedded:app:forms/task-form.html
                 <textarea type="text" class="form-control" name="obs_avaliacao_antecedentes"
                   cam-variable-name="obs_avaliacao_antecedentes" cam-variable-type="String" rows="3" cols="80">
           </textarea>
-  
+        </div>
+      </div>
+    
   
                 <div class="form-group">
                   <label for="obs_avaliacao_seto" class="col-sm-2 control-label">Observação Avaliacao Setor</label>
@@ -77,7 +86,9 @@ embedded:app:forms/task-form.html
                     <textarea type="text" class="form-control" name="obs_avaliacao_seto"
                       cam-variable-name="obs_avaliacao_seto" cam-variable-type="String" rows="3" cols="80">
           </textarea>
-  
+        </div>
+      </div>
+    
 
 
   <!-- checkbox -->
@@ -87,7 +98,7 @@ embedded:app:forms/task-form.html
       <div class="checkbox">
         <label>
           <input type="checkbox" name="reprovado" cam-variable-name="reprovado"
-            cam-variable-type="Boolean" readonly checked="checked" class="form-control" />
+            cam-variable-type="Boolean" readonly  class="form-control" />
           Reprovado
         </label>
       </div>

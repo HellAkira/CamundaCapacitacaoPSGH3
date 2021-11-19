@@ -9,11 +9,15 @@ embedded:app:forms/task-form.html
   <div class="form-group">
     <label for="nome_candidato" class="col-sm-2 control-label">Nome Candidato</label>
     <div class="col-sm-10">
-      <input type="text" name="nome_candidato" cam-variable-name="telefone_contato" cam-variable-type="String"
+      <input type="text" name="nome_candidato"
+      ng-click = "alerta()"
+      ng-model="candidato"
+      cam-variable-type="String"
+      placeholder="Digite seu nome"
         class="form-control" />
     </div>
   </div>
-
+  
 
   <div class="form-group">
     <label for="telefone_contato" class="col-sm-2 control-label">Telefone Contato</label>
@@ -26,9 +30,11 @@ embedded:app:forms/task-form.html
   <div class="form-group">
     <label for="email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
-      <input type="text" name="email" cam-variable-name="email" cam-variable-type="String" class="form-control" />
+      <input type="text" name="email" cam-variable-name="email" 
+      cam-variable-type="String" class="form-control" />
     </div>
   </div>
+
 
   <div class="form-group">
     <label for="curriculo" class="col-sm-2 control-label">Curriculo Arquivo</label>
@@ -48,16 +54,43 @@ embedded:app:forms/task-form.html
     <div class="checkbox">
       <label>
         <input type="checkbox" name="cancelar" cam-variable-name="cancelar" cam-variable-type="Boolean"
-          checked="checked" class="form-control" />
+           class="form-control" />
         Cancelado
       </label>
     </div>
   </div>
 </div>
 
+<div class="form-group">
+  <label for="obs" class="col-sm-2 control-label">obs</label>
+  <div class="col-sm-10">
+    <input type="obs" name="obs" cam-variable-name="obs" 
+    cam-variable-type="String" class="form-control" />
+  </div>
+</div>
 
+<table class="table table-responsive">
+  <tr ng-repeat="(key, value) in listaObs">
+    <td>{{value}}</td>
+  </tr>
+</table>
 
   <script cam-script type="text/form-script">
-  // custom JavaScript goes here
+
+    $scope.obs ="";
+    $scope.listaObs = [];
+
+    camForm.on('submit', function(evt){
+
+      $scope.listaObs.push($scope.obs);
+
+      camForm.variableManager.createVariable({
+       name: 'observacao',
+       type: 'json',
+       value: $scope.listaObs
+      });
+      
+    });
+
   </script>
 </form>
