@@ -19,8 +19,8 @@
     <camunda.version>7.15.0-ee</camunda.version>
     Make sure you also switch to EE repository below
     -->
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>3.8.4</maven.compiler.source>
+    <maven.compiler.target>3.8.4</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <failOnMissingWebXml>false</failOnMissingWebXml>
   </properties>

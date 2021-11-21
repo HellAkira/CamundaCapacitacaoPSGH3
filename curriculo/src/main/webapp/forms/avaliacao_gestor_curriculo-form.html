@@ -4,13 +4,13 @@ by setting the formKey of a BPMN User Task to:
 embedded:app:forms/task-form.html
 -->
 
-<form name="avaliacao_gestor_RH" class="form-horizontal" role="form">
+<form name="avaliacao_gestor_curriculo" class="form-horizontal" role="form">
 
   <!-- read-only field -->
   <div class="form-group">
     <label for="nome_candidato" class="col-sm-2 control-label">Nome Candidato</label>
     <div class="col-sm-10">
-      <input type="text" name="nome_candidato" cam-variable-name="nome_candidato" cam-variable-type="String"
+      <input type="text" name="nome_candidato" cam-variable-name="nome_candidato" cam-variable-type="String" readonly
         class="form-control" />
     </div>
   </div>
@@ -19,7 +19,7 @@ embedded:app:forms/task-form.html
   <div class="form-group">
     <label for="telefone_contato" class="col-sm-2 control-label">Telefone Contato</label>
     <div class="col-sm-10">
-      <input type="text" name="telefone_contato" cam-variable-name="telefone_contato" cam-variable-type="String"
+      <input type="text" name="telefone_contato" cam-variable-name="telefone_contato" cam-variable-type="String" readonly
         class="form-control" />
     </div>
   </div>
@@ -27,15 +27,7 @@ embedded:app:forms/task-form.html
   <div class="form-group">
     <label for="email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
-      <input type="text" name="email" cam-variable-name="email" cam-variable-type="String" class="form-control" />
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="data_entrevista" class="col-sm-2 control-label">Data da Entrevista</label>
-    <div class="col-sm-10">
-      <input type="Date" name="data_entrevista" cam-variable-name="data_entrevista" cam-variable-type="Date"
-        class="form-control" />
+      <input type="text" name="email" cam-variable-name="email" cam-variable-type="String" class="form-control" readonly/>
     </div>
   </div>
 
@@ -44,7 +36,7 @@ embedded:app:forms/task-form.html
     <label for="obs_classificar_curriculo" class="col-sm-2 control-label">Observação Classificar Curriculo</label>
     <div class="col-sm-10">
       <textarea type="text" class="form-control" name="obs_classificar_curriculo"
-        cam-variable-name="obs_classificar_curriculo" cam-variable-type="String" rows="3" cols="80">
+        cam-variable-name="obs_classificar_curriculo" cam-variable-type="String" rows="3" cols="80" readonly> 
         </textarea>
     </div>
   </div>
@@ -72,7 +64,41 @@ embedded:app:forms/task-form.html
         </div>
       </div>
 
-                              <script cam-script type="text/form-script">
-  // custom JavaScript goes here
-  </script>
-</form>
+      <div class="form-group">
+        <label for="obs" class="col-sm-2 control-label">obs</label>
+        <div class="col-sm-10">
+          <input type="obs" name="obs" ng-model="obs" class="form-control" />
+        </div>
+      </div>
+      
+      <table class="table table-responsive">
+        <tr ng-repeat="(key, value) in listaObs">
+          <td>{{value}}</td>
+        </tr>
+      </table>
+  
+      {{listaObs}}
+      {{observacao}}
+      
+        <script cam-script type="text/form-script">
+      
+          $scope.obs ="";
+          $scope.listaObs = [];
+  
+          camForm.on('form-loaded', function(){
+            camForm.variableManager.fetchVariable('observacao');
+          });
+  
+          camForm.on('variables-fetched', function(){
+            $scope.listaObs = camForm.variableManager.variableValue('observacao');
+          });
+      
+          camForm.on('submit', function(evt){
+      
+            $scope.listaObs.push($scope.obs);
+            camForm.variableManager.variableValue('observacao', $scope.listaObs);
+            
+          });
+      
+        </script>
+      </form>

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: br.gov.ms.detran.bmps.ProcessUnitTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.21 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.114 sec

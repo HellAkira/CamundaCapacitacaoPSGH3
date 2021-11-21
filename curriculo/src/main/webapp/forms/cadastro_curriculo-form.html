@@ -64,14 +64,13 @@ embedded:app:forms/task-form.html
 <div class="form-group">
   <label for="obs" class="col-sm-2 control-label">obs</label>
   <div class="col-sm-10">
-    <input type="obs" name="obs" cam-variable-name="obs" 
-    cam-variable-type="String" class="form-control" />
+    <input type="obs" name="obs" ng-model="obs" class="form-control" />
   </div>
 </div>
 
 <table class="table table-responsive">
   <tr ng-repeat="(key, value) in listaObs">
-    <td>{{value}}</td>
+    <td>{{key}} -> {{value}}</td>
   </tr>
 </table>
 
@@ -80,10 +79,9 @@ embedded:app:forms/task-form.html
     $scope.obs ="";
     $scope.listaObs = [];
 
+
     camForm.on('submit', function(evt){
-
       $scope.listaObs.push($scope.obs);
-
       camForm.variableManager.createVariable({
        name: 'observacao',
        type: 'json',

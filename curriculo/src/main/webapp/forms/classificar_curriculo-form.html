@@ -39,7 +39,7 @@ embedded:app:forms/task-form.html
     <label for="obs_classificar_curriculo" class="col-sm-2 control-label">Observação Classificar Curriculo</label>
     <div class="col-sm-10">
       <textarea type="Boolean" class="form-control" name="obs_classificar_curriculo"
-        cam-variable-name="obs_classificar_curriculo" cam-variable-type="String" rows="3" cols="80">
+        cam-variable-name="obs_classificar_curriculo" cam-variable-type="String" rows="3" cols="80" >
         </textarea>
     </div>
   </div>
@@ -62,8 +62,7 @@ embedded:app:forms/task-form.html
     <div class="form-group">
       <label for="obs" class="col-sm-2 control-label">obs</label>
       <div class="col-sm-10">
-        <input type="obs" name="obs" cam-variable-name="obs" 
-        cam-variable-type="String" class="form-control" />
+        <input type="obs" name="obs" ng-model="obs" class="form-control" />
       </div>
     </div>
     
@@ -72,6 +71,9 @@ embedded:app:forms/task-form.html
         <td>{{value}}</td>
       </tr>
     </table>
+
+    {{listaObs}}
+    {{observacao}}
     
       <script cam-script type="text/form-script">
     
@@ -79,17 +81,16 @@ embedded:app:forms/task-form.html
         $scope.listaObs = [];
 
         camForm.on('form-loaded', function(){
-          camForm.variableManager.fetchVariable
+          camForm.variableManager.fetchVariable('observacao');
         });
 
-        camForm.on('variable-fetched', function(){
+        camForm.on('variables-fetched', function(){
           $scope.listaObs = camForm.variableManager.variableValue('observacao');
         });
     
         camForm.on('submit', function(evt){
     
           $scope.listaObs.push($scope.obs);
-    
           camForm.variableManager.variableValue('observacao', $scope.listaObs);
           
         });
